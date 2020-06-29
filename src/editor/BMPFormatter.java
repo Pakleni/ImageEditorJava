@@ -74,9 +74,14 @@ public class BMPFormatter extends Formatter {
 				image.setRGB(j, i, rgb);
 			}
 		}
-		
-		ImageIO.write(image, "bmp" , new File(path));
+		File file;
+		if (path.equals("")) {
+			file = new File("bin/Images/temp.bmp");
+		}
+		else{
+			file = new File(path);
+		}	
+		ImageIO.write(image, "bmp" , file);
 		
 	}
-
 }

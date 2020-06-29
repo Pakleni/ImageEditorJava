@@ -1,27 +1,18 @@
 package editor;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.imageio.ImageIO;
-
-import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
 public class PAMFormatter extends Formatter {
-
-	public PAMFormatter() {
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public Image load(String path) throws IOException, ParseException {
@@ -32,30 +23,31 @@ public class PAMFormatter extends Formatter {
 	public void save(String path, Image img) throws IOException {
 		
 		String n = "\n";
-		String out = "P7" + n + 
+		StringBuffer out = new StringBuffer();
+		
+		out.append("P7" + n + 
 				"WIDTH " + img.width + n +
 				"HEIGHT " + img.height + n +
 				"DEPTH 4" + n +
 				"MAXVAL 255" + n +
 				"TUPLTYPE RGB_ALPHA" + n +
-				"ENDHDR" + n;
+				"ENDHDR" + n);
 		
-//		byte[] bytes = new byte[4 * img.width * img.height];
-		
-		
+		byte pixs[] = new byte[4*img.width*img.height];
 		
 		for (int i = 0; i < img.height; ++i) {
 			for (int j = 0; j < img.width; ++j) {
 				Pixel p = img.get(i, j);
-//				bytes[(i*img.width + j) * 4    ] = (byte)  p.r;
-//				bytes[(i*img.width + j) * 4 + 1] = (byte)  p.g;
-//				bytes[(i*img.width + j) * 4 + 2] = (byte)  p.b;
-//				bytes[(i*img.width + j) * 4 + 3] = (byte) (p.a*255/100);
 				
-				out += (char) p.r;
-				out += (char) p.g;
-				out += (char) p.b;
-				out += (char)(p.a * 255 / 100);
+//				out.append((char)(p.r & 0xFF));
+//				out.append((char)(p.g & 0xFF));
+//				out.append((char)(p.b & 0xFF));
+//				out.append((char)((p.a * 255 / 100) & 0xFF));
+				
+				pixs[(i*img.width + j) * 4    ] = (byte)(p.r & 0xFF);
+				pixs[(i*img.width + j) * 4 + 1] = (byte)(p.g & 0xFF);
+				pixs[(i*img.width + j) * 4 + 2] = (byte)(p.b & 0xFF);
+				pixs[(i*img.width + j) * 4 + 3] = (byte)((p.a * 255 / 100) & 0xFF);
 			}
 		}
 		
@@ -72,9 +64,15 @@ public class PAMFormatter extends Formatter {
 		
 		FileWriter wr = new FileWriter(file);
 		
-		wr.write(out);
+		wr.write(out.toString());
 		wr.flush();
 		wr.close();
+		
+		FileOutputStream fos = new FileOutputStream(file, true);
+				
+		fos.write(pixs);
+		
+		fos.close();
 
 	}
 

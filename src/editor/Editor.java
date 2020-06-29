@@ -225,7 +225,6 @@ class InputDialog extends Dialog {
 	}
 	
 	public void start(ActionListener action) {
-		
 		in.addActionListener(action);
 		in.addActionListener(close);
 		perform.addActionListener(action);
