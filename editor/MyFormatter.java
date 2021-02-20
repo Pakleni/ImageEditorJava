@@ -1,7 +1,6 @@
 package editor;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,7 +10,6 @@ import java.util.Map;
 import java.util.Vector;
 
 import org.json.simple.JSONArray; 
-import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.*;
 
@@ -126,13 +124,11 @@ public class MyFormatter extends Formatter {
 
 			@Override
 			public List creatArrayContainer() {
-				// TODO Auto-generated method stub
 				return new JSONArray();
 			}
 
 			@Override
 			public Map createObjectContainer() {
-				// TODO Auto-generated method stub
 				return new LinkedHashMap();
 			}
 		};
@@ -249,10 +245,8 @@ public class MyFormatter extends Formatter {
 			
 			
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	 }

@@ -7,12 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.Button;
 import java.awt.Dialog;
-import java.awt.Frame;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.MenuItem;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -269,13 +264,11 @@ public class CompositeOperation extends Operation {
 
 			@Override
 			public List creatArrayContainer() {
-				// TODO Auto-generated method stub
 				return new JSONArray();
 			}
 
 			@Override
 			public Map createObjectContainer() {
-				// TODO Auto-generated method stub
 				return new LinkedHashMap();
 			}
 		};
