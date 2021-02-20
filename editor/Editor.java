@@ -487,6 +487,8 @@ class CompositeSaveMenu extends Dialog {
 		
 		this.setLayout(new GridLayout(e.img.operations.size(), 1));
 		
+		int height = 0;
+
 		for (CompositeOperation op: e.img.operations) {
 			Button butt = new Button(op.name);
 			
@@ -505,7 +507,10 @@ class CompositeSaveMenu extends Dialog {
 			});
 			
 			add(butt);
+			height += 100;
 		}
+
+		this.setSize(300, height);
 		
 		dodajOsluskivace();
 		
