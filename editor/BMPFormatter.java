@@ -23,7 +23,7 @@ public class BMPFormatter extends Formatter {
 		File bmpFile;
 		
 		if (path.equals("")) {
-			bmpFile = new File("bin/Images/Shapes.bmp");
+			bmpFile = new File("./Images/Shapes.bmp");
 		}
 		else{
 			bmpFile = new File(path);
@@ -76,7 +76,7 @@ public class BMPFormatter extends Formatter {
 		}
 		File file;
 		if (path.equals("")) {
-			file = new File("bin/Images/temp.bmp");
+			file = new File("./Images/temp.bmp");
 		}
 		else{
 			file = new File(path);

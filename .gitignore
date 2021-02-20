@@ -1,3 +1,4 @@
 .vscode
-/ImageEditor/SDL2.dll
-/json-simple-1.1.1.jar
+ImageEditor/SDL2.dll
+json-simple-1.1.1.jar
+temp/*

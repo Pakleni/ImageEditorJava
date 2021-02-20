@@ -6,7 +6,6 @@ import java.awt.Button;
 import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Dialog;
-import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;

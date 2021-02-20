@@ -39,11 +39,6 @@ public class PAMFormatter extends Formatter {
 			for (int j = 0; j < img.width; ++j) {
 				Pixel p = img.get(i, j);
 				
-//				out.append((char)(p.r & 0xFF));
-//				out.append((char)(p.g & 0xFF));
-//				out.append((char)(p.b & 0xFF));
-//				out.append((char)((p.a * 255 / 100) & 0xFF));
-				
 				pixs[(i*img.width + j) * 4    ] = (byte)(p.r & 0xFF);
 				pixs[(i*img.width + j) * 4 + 1] = (byte)(p.g & 0xFF);
 				pixs[(i*img.width + j) * 4 + 2] = (byte)(p.b & 0xFF);
@@ -54,7 +49,7 @@ public class PAMFormatter extends Formatter {
 		File file;
 		
 		if (path.equals("")) {
-			file = new File("bin/Images/temp.pam");
+			file = new File("./Images/temp.pam");
 		}
 		else {
 			file = new File(path);
@@ -81,7 +76,7 @@ public class PAMFormatter extends Formatter {
 		byte[] pamFile;
 		
 		if (path.equals("")) {
-			pamFile = Files.readAllBytes(Paths.get("bin/Images/Sample.pam"));
+			pamFile = Files.readAllBytes(Paths.get("./Images/sample.pam"));
 		}
 		else{
 			pamFile = Files.readAllBytes(Paths.get(path));
@@ -215,7 +210,7 @@ public class PAMFormatter extends Formatter {
 			
 			new PAMFormatter().save("", img);
 			
-			new PAMFormatter().load("bin/Images/temp.pam");
+			new PAMFormatter().load("./Images/temp.pam");
 			
 			
 		} catch (IOException e) {

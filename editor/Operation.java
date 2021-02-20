@@ -45,25 +45,25 @@ public abstract class Operation {
 			
 			
 			MyFormatter form = new MyFormatter();
-			form.save("bin/temp/temp.json",e.img);
+			form.save("./temp/temp.json",e.img);
 			
 			
-			File fun = new File("bin/temp/temp.fun");
+			File fun = new File("./temp/temp.fun");
 			fun.createNewFile();
 			FileWriter wr = new FileWriter(fun);
 			wr.write(toString());
 			wr.flush();
 			wr.close();
 			
-			File error = new File("bin/temp/err.txt");
+			File error = new File("./temp/err.txt");
 			error.createNewFile();
 			
 			
 			Process process =
 					new ProcessBuilder(
-							"bin/ImageEditor/ImageEditor.exe",
-							"bin/temp/temp.json",
-							"bin/temp/temp.fun")
+							"./ImageEditor/ImageEditor.exe",
+							"./temp/temp.json",
+							"./temp/temp.fun")
 					.redirectError(error)
 					.start();
 			
@@ -71,13 +71,13 @@ public abstract class Operation {
 			process.waitFor();
 			
 			
-			e.onLoad(form.load("bin/temp/temp.json"));
+			e.onLoad(form.load("./temp/temp.json"));
 			
 			
-			File file = new File("bin/temp/temp.json");
+			File file = new File("./temp/temp.json");
 			file.delete();
 			
-//			file = new File("bin/temp/temp.fun");
+//			file = new File("./temp/temp.fun");
 //			file.delete();
 			
 			

@@ -101,7 +101,7 @@ public class MyFormatter extends Formatter {
 		File file;
 		
 		if (path.equals("")) {
-			file = new File("bin/Images/Saves/temp.json");
+			file = new File("./Images/Saves/temp.json");
 		}
 		else {
 			file = new File(path);
@@ -138,7 +138,7 @@ public class MyFormatter extends Formatter {
 		};
 		
 		if (path.equals("")) {
-			obj = par.parse(new FileReader("bin/Images/Saves/Shapes.json"), fac);
+			obj = par.parse(new FileReader("./Images/Saves/Shapes.json"), fac);
 		}
 		else {
 			obj = par.parse(new FileReader(path), fac);
@@ -245,7 +245,7 @@ public class MyFormatter extends Formatter {
 		 try {
 			Image img = form.load("");
 			 
-			form.save("bin/Images/Saves/img.json", img);
+			form.save("./Images/Saves/img.json", img);
 			
 			
 		} catch (ParseException e) {
